@@ -3,65 +3,80 @@
 @{
     ViewBag.Title = "Index";
 }
+@section DataTables{
 
-<h2>Index</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TradeDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SettleDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Symbol)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Account)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Principal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Currency)
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TradeDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SettleDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Symbol)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Account)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Principal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Currency)
-        </td>
-
-    </tr>
+                      <link rel="stylesheet" type="text/css" href="~/Content/DataTables/css/jquery.dataTables.min.css">
+                      <link rel="stylesheet" type="text/css" href="~/Content/DataTables/css/dataTables.bootstrap.min.css">
+                      <script type="text/javascript" charset="utf8" src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+                      <script type="text/javascript" charset="utf8" src="~/Scripts/DataTables/dataTables.bootstrap.min.js"></script>
+                      <script type="text/javascript" class="init">
+                          $(document).ready(function () {
+                              $('#datatable').DataTable({
+                                  "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]]
+                              });
+                          });
+                      </script>
 }
-
-</table>
+     
+<h2>Index</h2>
+                      <table id="datatable" class="display dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">
+                          <thead>
+                              <tr>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.TradeDate)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.SettleDate)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Symbol)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Account)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Quantity)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Price)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Principal)
+                                  </th>
+                                  <th>
+                                      @Html.DisplayNameFor(model => model.Currency)
+                                  </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach (var item in Model)
+                              {
+                                  <tr>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.TradeDate)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.SettleDate)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Symbol)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Account)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Quantity)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Price)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Principal)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Currency)
+                                      </td>
+                                  </tr>
+                              }
+                          </tbody>
+                      </table>
